@@ -3,9 +3,9 @@ import { PropsWithChildren } from 'react';
 import useDimensions from 'react-cool-dimensions';
 import { Layer, Stage } from 'react-konva';
 
-export type BoardProps = unknown;
+export type CanvasProps = unknown;
 
-export const Board = ({ children }: PropsWithChildren<BoardProps>) => {
+export const Canvas = ({ children }: PropsWithChildren<CanvasProps>) => {
   const { observe, height, width } = useDimensions<HTMLDivElement>();
 
   return (
