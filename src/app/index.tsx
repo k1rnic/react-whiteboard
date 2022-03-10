@@ -1,7 +1,7 @@
 import { withProviders } from 'app/providers';
 
 const App = () => {
-  return <>App</>;
+  return <></>;
 };
 
 export default withProviders(App);

@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material';
 import { lightTheme } from 'shared/lib/theme';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 
 export const parameters = {
   layout: 'fullscreen',
