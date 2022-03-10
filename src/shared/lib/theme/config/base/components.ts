@@ -14,4 +14,9 @@ export const componentsConfig: Components = {
       };
     `,
   },
+  MuiButtonBase: {
+    defaultProps: {
+      disableRipple: true,
+    },
+  },
 };

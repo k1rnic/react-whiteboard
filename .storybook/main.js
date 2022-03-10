@@ -12,6 +12,15 @@ module.exports = {
       }),
     ];
 
+    const fileLoaderRule = config.module.rules.find(({ test }) => test.test('.svg'));
+    fileLoaderRule.exclude = /\.svg$/;
+
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
   core: {
