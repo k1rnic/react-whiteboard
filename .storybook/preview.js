@@ -1,3 +1,7 @@
+import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material';
+import { lightTheme } from 'shared/lib/theme';
+import { ThemeProvider } from 'emotion-theming';
+
 export const parameters = {
   layout: 'fullscreen',
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -8,3 +12,14 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <MuiThemeProvider theme={lightTheme}>
+      <CssBaseline />
+      <ThemeProvider theme={lightTheme}>
+        <Story />
+      </ThemeProvider>
+    </MuiThemeProvider>
+  ),
+];
