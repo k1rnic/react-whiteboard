@@ -1,8 +1,8 @@
-import { Divider } from '@mui/material';
+import { Divider as MuiDivider } from '@mui/material';
 
-export const ToolboxDivider = () => {
+export const Divider = () => {
   return (
-    <Divider
+    <MuiDivider
       flexItem
       orientation="vertical"
       sx={{

@@ -6,7 +6,8 @@ import AlignCenterIcon from 'shared/assets/icons/Align Center.svg';
 import AlignLeftIcon from 'shared/assets/icons/Align Left.svg';
 import AlignRightIcon from 'shared/assets/icons/Align Right.svg';
 import AlignJustifyIcon from 'shared/assets/icons/Justify.svg';
-import { ToolboxButton, ToolboxButtonGroup } from 'shared/ui/toolbox';
+import { ToggleButton } from 'shared/ui/toggle-button';
+import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const TextAlignSelector = () => {
   const [value, setValue] = useState<alignTextModel.TextAlign>('left');
@@ -17,21 +18,23 @@ export const TextAlignSelector = () => {
     setValue(selected);
   };
 
+  console.log({ isText });
+
   return isText ? (
-    <ToolboxButtonGroup exclusive value={value} onChange={handleChange}>
-      <ToolboxButton value="left">
+    <ToggleButtonGroup exclusive value={value} onChange={handleChange}>
+      <ToggleButton value="left">
         <AlignLeftIcon />
-      </ToolboxButton>
-      <ToolboxButton value="center">
+      </ToggleButton>
+      <ToggleButton value="center">
         <AlignCenterIcon />
-      </ToolboxButton>
-      <ToolboxButton value="right">
+      </ToggleButton>
+      <ToggleButton value="right">
         <AlignRightIcon />
-      </ToolboxButton>
-      <ToolboxButton value="justify">
+      </ToggleButton>
+      <ToggleButton value="justify">
         <AlignJustifyIcon />
-      </ToolboxButton>
-    </ToolboxButtonGroup>
+      </ToggleButton>
+    </ToggleButtonGroup>
   ) : (
     <></>
   );

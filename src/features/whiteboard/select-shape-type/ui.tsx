@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import FileIcon from 'shared/assets/icons/File.svg';
 import ImageIcon from 'shared/assets/icons/Image.svg';
 import VideoIcon from 'shared/assets/icons/Video.svg';
-import { ToolboxButton, ToolboxButtonGroup, ToolboxTextButton } from 'shared/ui/toolbox';
+import { ToggleButton } from 'shared/ui/toggle-button';
+import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const ShapeTypeSelector = () => {
   const [value, setValue] = useState<whiteboardModel.WhiteboardShapeType>();
@@ -16,17 +17,19 @@ export const ShapeTypeSelector = () => {
   };
 
   return (
-    <ToolboxButtonGroup exclusive value={value} onChange={handleChange}>
-      <ToolboxTextButton value="text">T</ToolboxTextButton>
-      <ToolboxButton value="image">
+    <ToggleButtonGroup exclusive value={value} onChange={handleChange}>
+      <ToggleButton variant="text" value="notes">
+        T
+      </ToggleButton>
+      <ToggleButton value="image">
         <ImageIcon />
-      </ToolboxButton>
-      <ToolboxButton value="video">
+      </ToggleButton>
+      <ToggleButton value="video">
         <VideoIcon />
-      </ToolboxButton>
-      <ToolboxButton value="file">
+      </ToggleButton>
+      <ToggleButton value="file">
         <FileIcon />
-      </ToolboxButton>
-    </ToolboxButtonGroup>
+      </ToggleButton>
+    </ToggleButtonGroup>
   );
 };

@@ -1,6 +1,6 @@
-import { styled, ToggleButtonGroup } from '@mui/material';
+import { styled, ToggleButtonGroup as MuiToggleButtonGroup } from '@mui/material';
 
-export const ToolboxButtonGroup = styled(ToggleButtonGroup)({
+export const ToggleButtonGroup = styled(MuiToggleButtonGroup)({
   '& > .MuiToggleButtonGroup-grouped': {
     margin: '4px !important',
     borderRadius: '4px !important',
