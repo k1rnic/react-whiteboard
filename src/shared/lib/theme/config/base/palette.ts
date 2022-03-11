@@ -20,6 +20,7 @@ export const paletteConfig: PaletteOptions = {
   },
   red: {
     3: '#F68989',
+    6: '#D91A1A',
   },
   blue: {
     1: '#E6EBF8',

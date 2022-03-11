@@ -64,6 +64,10 @@ const slice = createSlice({
         id === payload.id ? { ...payload, props: payload.props } : { id, ...props },
       );
     },
+    removeShape: (state, { payload }: PayloadAction<string>) => {
+      state.shapes = state.shapes.filter(({ id }) => id !== payload);
+      state.selectedShapeType = undefined;
+    },
     createShapeDraft: (state, { payload }: PayloadAction<Draft<Omit<WhiteboardShape, 'id' | 'draft'>>>) => {
       const shapeId = uuid();
 
@@ -82,5 +86,5 @@ const slice = createSlice({
   },
 });
 
-export const { selectShape, modifyShape, createShapeDraft, commitDrafts, resetDrafts } = slice.actions;
+export const { selectShape, modifyShape, createShapeDraft, commitDrafts, resetDrafts, removeShape } = slice.actions;
 export const reducer = slice.reducer;

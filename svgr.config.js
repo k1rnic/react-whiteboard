@@ -3,5 +3,6 @@ module.exports = {
   icon: true,
   replaceAttrValues: {
     '#BABACE': 'currentColor',
+    '#F68989': 'currentColor',
   },
 };
