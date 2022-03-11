@@ -11,8 +11,8 @@ import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const TextAlignSelector = () => {
   const [value, setValue] = useState<alignTextModel.TextAlign>('left');
-  const selectedShape = useSelector(whiteboardModel.selectedShapeTypeSelector);
-  const isText = selectedShape === whiteboardModel.WhiteboardShapeType.Notes;
+  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
+  const isText = selectedShape?.type === whiteboardModel.WhiteboardShapeType.Notes;
 
   const handleChange = (e: MouseEvent<HTMLElement>, selected: alignTextModel.TextAlign) => {
     setValue(selected);

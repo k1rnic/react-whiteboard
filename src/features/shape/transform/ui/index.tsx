@@ -13,13 +13,13 @@ export const ShapeTransformer = () => {
   const { palette } = useTheme();
   const transformerRef = useRef<TransformerRef>(null!);
 
-  const selected = useSelector(whiteboardModel.selectedShapeTypeSelector);
-  const enabledAnchors = useAnchors(selected);
+  const selected = useSelector(whiteboardModel.selectedShapeSelector);
+  const enabledAnchors = useAnchors(selected?.type);
 
   useEffect(() => {
     if (selected) {
       const stage = transformerRef.current?.getStage();
-      const target = stage?.findOne(`#${selected}`);
+      const target = stage?.findOne(`#${selected.id}`);
 
       target ? transformerRef.current.nodes([target]) : transformerRef.current.detach();
     } else {

@@ -1,3 +1,6 @@
+import { ImageConfig } from 'konva/lib/shapes/Image';
+import { TextConfig } from 'konva/lib/shapes/Text';
+
 export enum WhiteboardMode {
   View,
   Modify,
@@ -11,12 +14,16 @@ export enum WhiteboardShapeType {
   File,
 }
 
+export type WhiteboardShapeProps = TextConfig | ImageConfig;
+
 export type WhiteboardShape = {
+  id: string;
   type: WhiteboardShapeType;
+  props: WhiteboardShapeProps;
 };
 
 export type WhiteboardState = {
   mode: WhiteboardMode;
-  selectedShape?: WhiteboardShapeType;
+  selectedShapeId?: string;
   shapes: WhiteboardShape[];
 };

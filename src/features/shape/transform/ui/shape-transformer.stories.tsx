@@ -28,12 +28,12 @@ export const Overview: ComponentStory<typeof ShapeTransformer> = () => {
   const checkDeselect = ({ target }: KonvaEventObject<MouseEvent | TouchEvent>) => {
     const clickedOnEmpty = target === target.getStage();
     if (clickedOnEmpty) {
-      dispatch(whiteboardModel.selectShapeType());
+      dispatch(whiteboardModel.selectShape());
     }
   };
 
-  const handleSelectionChange = (selected: any) => {
-    dispatch(whiteboardModel.selectShapeType(selected));
+  const handleSelectionChange = (selected: string) => {
+    dispatch(whiteboardModel.selectShape(selected));
   };
 
   return (
