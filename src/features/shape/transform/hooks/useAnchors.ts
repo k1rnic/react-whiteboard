@@ -6,7 +6,7 @@ import { Anchor } from '../model';
 export const useAnchors = (shapeType?: whiteboardModel.WhiteboardShapeType): Anchor[] => {
   const anchors = useMemo(() => {
     switch (shapeType) {
-      case 'notes':
+      case whiteboardModel.WhiteboardShapeType.Notes:
         return [Anchor.MiddleLeft, Anchor.MiddleRight];
       case undefined:
         return [];

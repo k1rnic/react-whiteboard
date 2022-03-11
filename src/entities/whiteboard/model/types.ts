@@ -1,13 +1,22 @@
-export type WhiteboardMode = 'view' | 'modify' | 'insert';
+export enum WhiteboardMode {
+  View,
+  Modify,
+  Insert,
+}
 
-export type WhiteboardShapeType = 'notes' | 'image' | 'video' | 'file';
+export enum WhiteboardShapeType {
+  Notes,
+  Image,
+  Video,
+  File,
+}
 
 export type WhiteboardShape = {
   type: WhiteboardShapeType;
 };
 
-export interface WhiteboardState {
+export type WhiteboardState = {
   mode: WhiteboardMode;
   selectedShape?: WhiteboardShapeType;
   shapes: WhiteboardShape[];
-}
+};

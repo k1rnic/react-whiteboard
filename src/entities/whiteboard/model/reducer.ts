@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { WhiteboardShapeType, WhiteboardState } from './types';
+import { WhiteboardMode, WhiteboardShapeType, WhiteboardState } from './types';
 
 const initialState: WhiteboardState = {
-  mode: 'view',
+  mode: WhiteboardMode.View,
   shapes: [],
 };
 
@@ -16,7 +16,7 @@ const slice = createSlice({
     selectShapeType: (state, action: PayloadAction<WhiteboardShapeType | undefined>) => {
       state.selectedShape = action.payload;
       if (action.payload) {
-        state.mode = 'insert';
+        state.mode = WhiteboardMode.Insert;
       }
     },
   },
