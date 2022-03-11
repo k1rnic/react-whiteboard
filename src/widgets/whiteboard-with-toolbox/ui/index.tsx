@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { TextAlignSelector } from 'features/shape/align-text';
 import { ShapeTypeSelector } from 'features/whiteboard/select-shape-type';
+import { Canvas } from 'shared/ui/canvas';
 import { Toolbox, ToolboxDivider } from 'shared/ui/toolbox';
 
 import useStyles from './styles';
@@ -15,6 +16,7 @@ export const WhiteBoardWithToolbox = () => {
         <ToolboxDivider />
         <TextAlignSelector />
       </Toolbox>
+      <Canvas></Canvas>
     </Box>
   );
 };

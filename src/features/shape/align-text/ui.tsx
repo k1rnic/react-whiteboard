@@ -11,7 +11,7 @@ import { ToolboxButton, ToolboxButtonGroup } from 'shared/ui/toolbox';
 export const TextAlignSelector = () => {
   const [value, setValue] = useState<alignTextModel.TextAlign>('left');
   const selectedShape = useSelector(whiteboardModel.selectedShapeTypeSelector);
-  const isText = selectedShape === 'text';
+  const isText = selectedShape === 'notes';
 
   const handleChange = (e: MouseEvent<HTMLElement>, selected: alignTextModel.TextAlign) => {
     setValue(selected);

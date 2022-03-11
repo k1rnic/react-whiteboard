@@ -1,6 +1,6 @@
 export type WhiteboardMode = 'view' | 'modify' | 'insert';
 
-export type WhiteBoardShapeType = 'text' | 'image' | 'video' | 'file';
+export type WhiteBoardShapeType = 'notes' | 'image' | 'video' | 'file';
 
 export type WhiteBoardShape = {
   type: WhiteBoardShapeType;
