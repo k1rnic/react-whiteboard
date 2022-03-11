@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'shared/ui/canvas';
 import { Notes } from 'shared/ui/notes';
 
-import { selectShape, shapeListSelector, WhiteboardShape, WhiteboardShapeType } from '../model';
+import { modifyShape, selectShape, shapeListSelector, WhiteboardShape, WhiteboardShapeType } from '../model';
 
 const Shape = ({ id, type, props }: WhiteboardShape) => {
   const dispatch = useDispatch();
+
+  const handleChange = (changes: TextConfig) => {
+    dispatch(modifyShape({ id, type, props: changes }));
+  };
 
   const handleSelectionChange = () => {
     dispatch(selectShape(id));
@@ -18,7 +22,7 @@ const Shape = ({ id, type, props }: WhiteboardShape) => {
     case WhiteboardShapeType.Notes:
     default:
       return (
-        <Notes draggable id={id} {...(props as TextConfig)} onChange={console.log} onSelect={handleSelectionChange} />
+        <Notes draggable id={id} {...(props as TextConfig)} onChange={handleChange} onSelect={handleSelectionChange} />
       );
   }
 };

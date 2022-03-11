@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { WhiteboardMode, WhiteboardShapeType, WhiteboardState } from './types';
+import { WhiteboardMode, WhiteboardShape, WhiteboardShapeType, WhiteboardState } from './types';
 
 const initialState: WhiteboardState = {
   mode: WhiteboardMode.View,
@@ -54,8 +54,13 @@ const slice = createSlice({
         state.mode = WhiteboardMode.Insert;
       }
     },
+    modifyShape: (state, { payload }: PayloadAction<WhiteboardShape>) => {
+      state.shapes = state.shapes.map<any>(({ id, type, props }) =>
+        id === payload.id ? { id, type, props: payload.props } : { id, type, props },
+      );
+    },
   },
 });
 
-export const { selectShape } = slice.actions;
+export const { selectShape, modifyShape } = slice.actions;
 export const reducer = slice.reducer;
