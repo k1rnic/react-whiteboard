@@ -1,5 +1,6 @@
 import { Box, Toolbar as MuiToolbar } from '@mui/material';
 import { TextAlignSelector } from 'features/shape/align-text';
+import { TextStyleSelector } from 'features/shape/change-font-style';
 import { ShapeTypeSelector } from 'features/whiteboard/select-shape-type';
 import { Divider } from 'shared/ui/divider';
 
@@ -12,6 +13,8 @@ export const Toolbox = () => {
     <MuiToolbar sx={styles.root}>
       <Box sx={styles.item}>
         <ShapeTypeSelector />
+        <Divider />
+        <TextStyleSelector />
         <Divider />
         <TextAlignSelector />
       </Box>
