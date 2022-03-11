@@ -7,12 +7,12 @@ import { Toolbox } from './toolbox';
 export default {
   title: 'shared/toolbox',
   component: Toolbox,
-  args: {
-    before: [
-      <ObjectTypeButtonGroup key="ObjectTypeButtonGroup" {...ObjectTypeButtonGroup.args} />,
-      <ToolboxDivider key="divider" />,
-    ],
-  },
+  args: {},
 } as ComponentMeta<typeof Toolbox>;
 
-export const Overview: ComponentStory<typeof Toolbox> = (args) => <Toolbox {...args} />;
+export const Overview: ComponentStory<typeof Toolbox> = (args) => (
+  <Toolbox {...args}>
+    <ObjectTypeButtonGroup {...ObjectTypeButtonGroup.args} />
+    <ToolboxDivider />
+  </Toolbox>
+);

@@ -20,6 +20,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.8",
+    "@reduxjs/toolkit": "^1.8.0",
     "compose-function": "^3.0.3",
     "dotenv-webpack": "^7.1.0",
     "konva": "^8.3.3",

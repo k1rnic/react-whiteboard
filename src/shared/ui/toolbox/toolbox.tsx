@@ -1,23 +1,14 @@
 import { Box, Toolbar as MuiToolbar } from '@mui/material';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 import useStyles from './styles';
 
-export type ToolboxProps = {
-  before?: ReactNode[];
-  center?: ReactNode[];
-  after?: ReactNode[];
-  dense?: boolean;
-};
-
-export const Toolbox = ({ before = [], center = [], after = [], dense }: ToolboxProps) => {
-  const styles = useStyles({ dense });
+export const Toolbox = ({ children }: PropsWithChildren<unknown>) => {
+  const styles = useStyles();
 
   return (
     <MuiToolbar sx={styles.root}>
-      <Box sx={styles.item}>{before}</Box>
-      <Box sx={styles.item}>{center}</Box>
-      <Box sx={styles.item}>{after}</Box>
+      <Box sx={styles.item}>{children}</Box>
     </MuiToolbar>
   );
 };

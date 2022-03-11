@@ -1,5 +1,9 @@
 import compose from 'compose-function';
+import { ComponentType, FunctionComponent } from 'react';
 
-import { withTheme } from './with-theme';
+import { withStore } from './with-store';
+import { WithTheme, withTheme } from './with-theme';
 
-export const withProviders = compose(withTheme);
+type WithProviders = <T>(Component: ComponentType<T>) => FunctionComponent<WithTheme & T>;
+
+export const withProviders: WithProviders = compose(withStore, withTheme);
