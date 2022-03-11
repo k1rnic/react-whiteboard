@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { Anchor } from '../model';
 
-export const useAnchors = (shapeType?: whiteboardModel.WhiteBoardShapeType): Anchor[] => {
+export const useAnchors = (shapeType?: whiteboardModel.WhiteboardShapeType): Anchor[] => {
   const anchors = useMemo(() => {
     switch (shapeType) {
       case 'notes':

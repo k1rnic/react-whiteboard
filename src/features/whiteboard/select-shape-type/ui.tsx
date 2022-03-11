@@ -7,10 +7,10 @@ import VideoIcon from 'shared/assets/icons/Video.svg';
 import { ToolboxButton, ToolboxButtonGroup, ToolboxTextButton } from 'shared/ui/toolbox';
 
 export const ShapeTypeSelector = () => {
-  const [value, setValue] = useState<whiteboardModel.WhiteBoardShapeType>();
+  const [value, setValue] = useState<whiteboardModel.WhiteboardShapeType>();
   const dispatch = useDispatch();
 
-  const handleChange = (e: MouseEvent<HTMLElement>, selected?: whiteboardModel.WhiteBoardShapeType) => {
+  const handleChange = (e: MouseEvent<HTMLElement>, selected?: whiteboardModel.WhiteboardShapeType) => {
     setValue(selected);
     dispatch(whiteboardModel.selectShapeType(selected));
   };

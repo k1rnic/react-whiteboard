@@ -1,11 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { WhiteBoardWithToolbox } from '.';
+import { WhiteboardWithToolbox } from '.';
 
 export default {
-  title: 'widgets/whiteBoard-with-toolbox',
-  component: WhiteBoardWithToolbox,
+  title: 'widgets/whiteboard-with-toolbox',
+  component: WhiteboardWithToolbox,
   args: {},
-} as ComponentMeta<typeof WhiteBoardWithToolbox>;
+} as ComponentMeta<typeof WhiteboardWithToolbox>;
 
-export const Overview: ComponentStory<typeof WhiteBoardWithToolbox> = (args) => <WhiteBoardWithToolbox />;
+export const Overview: ComponentStory<typeof WhiteboardWithToolbox> = (args) => <WhiteboardWithToolbox />;

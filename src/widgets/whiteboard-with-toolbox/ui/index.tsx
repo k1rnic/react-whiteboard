@@ -6,7 +6,7 @@ import { Toolbox, ToolboxDivider } from 'shared/ui/toolbox';
 
 import useStyles from './styles';
 
-export const WhiteBoardWithToolbox = () => {
+export const WhiteboardWithToolbox = () => {
   const styles = useStyles();
 
   return (
