@@ -19,7 +19,6 @@ export const Notes = ({ onChange, onSelect, ...shapeProps }: NotesProps) => {
     <Text
       {...shapeProps}
       ref={shapeRef}
-      draggable
       padding={8}
       onClick={handleSelect}
       onDragStart={handleSelect}

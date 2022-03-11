@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { Canvas } from 'shared/ui/canvas';
+import { Whiteboard } from 'entities/whiteboard';
+import { ShapeTransformer } from 'features/shape/transform';
 import { Toolbox } from 'widgets/toolbox';
 
 import useStyles from './styles';
@@ -10,7 +11,9 @@ export const WhiteboardWithToolbox = () => {
   return (
     <Box sx={styles.root}>
       <Toolbox />
-      <Canvas></Canvas>
+      <Whiteboard>
+        <ShapeTransformer />
+      </Whiteboard>
     </Box>
   );
 };
