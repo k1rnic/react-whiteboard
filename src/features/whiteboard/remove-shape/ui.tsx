@@ -10,17 +10,13 @@ export const RemoveShapeButton = () => {
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
 
-  const canRemove = selectedShape && !selectedShape?.draft;
-
   const handleRemove = () => {
     dispatch(whiteboardModel.removeShape(selectedShape!.id));
   };
 
-  return canRemove ? (
+  return (
     <ToggleButton value="trash" sx={styles.root} onClick={handleRemove}>
       <DeleteIcon />
     </ToggleButton>
-  ) : (
-    <></>
   );
 };

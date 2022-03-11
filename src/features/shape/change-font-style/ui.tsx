@@ -7,7 +7,6 @@ import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 export const TextStyleSelector = () => {
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
-  const isText = selectedShape?.type === whiteboardModel.WhiteboardShapeType.Notes;
 
   // const selectedFontStyleOptions: string[] = (selectedShape?.props.fontStyle || 'normal regular').split(' ');
   const selectedStyleOptions: string[] = [selectedShape?.props.fontStyle, selectedShape?.props.textDecoration];
@@ -26,7 +25,7 @@ export const TextStyleSelector = () => {
     );
   };
 
-  return isText ? (
+  return (
     <ToggleButtonGroup value={selectedStyleOptions} onChange={handleChange}>
       <ToggleButton variant="text" value="bold" sx={{ fontWeight: 'bold' }}>
         B
@@ -41,7 +40,5 @@ export const TextStyleSelector = () => {
         S
       </ToggleButton>
     </ToggleButtonGroup>
-  ) : (
-    <></>
   );
 };

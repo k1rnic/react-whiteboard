@@ -14,7 +14,7 @@ export enum WhiteboardShapeType {
   File,
 }
 
-export type WhiteboardShapeProps = TextConfig | ImageConfig;
+export type WhiteboardShapeProps = TextConfig | (ImageConfig & { src: string });
 
 export type WhiteboardShape = {
   id: string;

@@ -1,15 +1,14 @@
 import { whiteboardModel } from 'entities/whiteboard';
-import { selectedShapeTypeSelector } from 'entities/whiteboard/model';
+import { ImageShapeUploader } from 'features/whiteboard/upload-image-shape';
 import { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FileIcon from 'shared/assets/icons/File.svg';
-import ImageIcon from 'shared/assets/icons/Image.svg';
 import VideoIcon from 'shared/assets/icons/Video.svg';
 import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
-export const ShapeTypeSelector = () => {
-  const selectedShapeType = useSelector(selectedShapeTypeSelector);
+export const NewShapeToggleGroup = () => {
+  const selectedShapeType = useSelector(whiteboardModel.selectedShapeTypeSelector);
   const dispatch = useDispatch();
 
   const handleChange = (e: MouseEvent<HTMLElement>, selected?: whiteboardModel.WhiteboardShapeType) => {
@@ -33,9 +32,7 @@ export const ShapeTypeSelector = () => {
       <ToggleButton variant="text" value={whiteboardModel.WhiteboardShapeType.Notes}>
         T
       </ToggleButton>
-      <ToggleButton value={whiteboardModel.WhiteboardShapeType.Image}>
-        <ImageIcon />
-      </ToggleButton>
+      <ImageShapeUploader />
       <ToggleButton value={whiteboardModel.WhiteboardShapeType.Video}>
         <VideoIcon />
       </ToggleButton>

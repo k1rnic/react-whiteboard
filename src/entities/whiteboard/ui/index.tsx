@@ -3,6 +3,7 @@ import { TextConfig } from 'konva/lib/shapes/Text';
 import { PropsWithChildren } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'shared/ui/canvas';
+import { Image, ImageProps } from 'shared/ui/image';
 import { Notes } from 'shared/ui/notes';
 
 import {
@@ -19,7 +20,7 @@ import {
 const Shape = ({ id, type, props }: WhiteboardShape) => {
   const dispatch = useDispatch();
 
-  const handleChange = (changes: TextConfig) => {
+  const handleChange = (changes: TextConfig | ImageProps) => {
     dispatch(modifyShape({ id, type, props: changes }));
   };
 
@@ -28,6 +29,10 @@ const Shape = ({ id, type, props }: WhiteboardShape) => {
   };
 
   switch (type) {
+    case WhiteboardShapeType.Image:
+      return (
+        <Image draggable id={id} {...(props as ImageProps)} onChange={handleChange} onSelect={handleSelectionChange} />
+      );
     case WhiteboardShapeType.Notes:
     default:
       return (

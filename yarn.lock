@@ -11375,6 +11375,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-image@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/use-image/-/use-image-1.0.10.tgz#75c338ca228244b9ba54f9ae1a24cfffdd6b2fb8"
+  integrity sha512-Q+YvP9s5OpYNwrbLFyi9L8LX4o+c59rF12tP2ggwf8RC2Jf+xChhuDVjYO3oZfWgSfdM42ilPIOldjOl+pmb+g==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"

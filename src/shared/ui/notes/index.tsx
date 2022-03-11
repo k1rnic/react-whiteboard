@@ -19,7 +19,7 @@ export const Notes = ({ onChange, onSelect, ...shapeProps }: NotesProps) => {
     <Text
       {...shapeProps}
       ref={shapeRef}
-      padding={8}
+      padding={12}
       onClick={handleSelect}
       onDragStart={handleSelect}
       onDragEnd={({ target }) => {

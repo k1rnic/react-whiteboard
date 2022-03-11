@@ -11,7 +11,16 @@ export const useAnchors = (shapeType?: whiteboardModel.WhiteboardShapeType): Anc
       case undefined:
         return [];
       default:
-        return [Anchor.TopLeft, Anchor.TopRight, Anchor.BottomLeft, Anchor.BottomRight];
+        return [
+          Anchor.TopLeft,
+          Anchor.TopCenter,
+          Anchor.TopRight,
+          Anchor.MiddleLeft,
+          Anchor.MiddleRight,
+          Anchor.BottomLeft,
+          Anchor.BottomCenter,
+          Anchor.BottomRight,
+        ];
     }
   }, [shapeType]);
 

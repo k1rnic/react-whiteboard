@@ -1,4 +1,5 @@
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import TestImgSrc from 'shared/assets/img/img.jpg';
 import { uuid } from 'shared/lib/uuid';
 
 import { WhiteboardMode, WhiteboardShape, WhiteboardShapeType, WhiteboardState } from './types';
@@ -43,6 +44,18 @@ const initialState: WhiteboardState = {
         y: 200,
       },
     },
+    {
+      id: 'notes4',
+      type: WhiteboardShapeType.Image,
+      draft: false,
+      props: {
+        src: TestImgSrc,
+        x: 350,
+        y: 350,
+        width: 150,
+        height: 150,
+      },
+    },
   ],
 };
 
@@ -68,6 +81,13 @@ const slice = createSlice({
       state.shapes = state.shapes.filter(({ id }) => id !== payload);
       state.selectedShapeType = undefined;
     },
+    createShape: (state, { payload }: PayloadAction<Draft<Omit<WhiteboardShape, 'id' | 'draft'>>>) => {
+      const shapeId = uuid();
+
+      state.selectedShapeId = shapeId;
+      state.shapes.push({ ...payload, id: shapeId, draft: false });
+      state.selectedShapeType = payload.type;
+    },
     createShapeDraft: (state, { payload }: PayloadAction<Draft<Omit<WhiteboardShape, 'id' | 'draft'>>>) => {
       const shapeId = uuid();
 
@@ -86,5 +106,6 @@ const slice = createSlice({
   },
 });
 
-export const { selectShape, modifyShape, createShapeDraft, commitDrafts, resetDrafts, removeShape } = slice.actions;
+export const { selectShape, modifyShape, createShape, createShapeDraft, commitDrafts, resetDrafts, removeShape } =
+  slice.actions;
 export const reducer = slice.reducer;

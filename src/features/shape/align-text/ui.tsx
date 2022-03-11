@@ -12,7 +12,6 @@ import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 export const TextAlignSelector = () => {
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
-  const isText = selectedShape?.type === whiteboardModel.WhiteboardShapeType.Notes;
 
   const selectedAlignOption: alignTextModel.TextAlign = selectedShape?.props.align || 'left';
 
@@ -20,7 +19,7 @@ export const TextAlignSelector = () => {
     dispatch(whiteboardModel.modifyShape({ ...selectedShape!, props: { ...selectedShape?.props, align } }));
   };
 
-  return isText ? (
+  return (
     <ToggleButtonGroup exclusive value={selectedAlignOption} onChange={handleChange}>
       <ToggleButton value="left">
         <AlignLeftIcon />
@@ -35,7 +34,5 @@ export const TextAlignSelector = () => {
         <AlignJustifyIcon />
       </ToggleButton>
     </ToggleButtonGroup>
-  ) : (
-    <></>
   );
 };
