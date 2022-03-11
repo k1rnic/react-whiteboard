@@ -1,7 +1,7 @@
 import { whiteboardModel } from 'entities/whiteboard';
 import { alignTextModel } from 'features/shape/align-text';
-import { MouseEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { MouseEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import AlignCenterIcon from 'shared/assets/icons/Align Center.svg';
 import AlignLeftIcon from 'shared/assets/icons/Align Left.svg';
 import AlignRightIcon from 'shared/assets/icons/Align Right.svg';
@@ -10,18 +10,18 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const TextAlignSelector = () => {
-  const [value, setValue] = useState<alignTextModel.TextAlign>('left');
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
+  const dispatch = useDispatch();
   const isText = selectedShape?.type === whiteboardModel.WhiteboardShapeType.Notes;
 
-  const handleChange = (e: MouseEvent<HTMLElement>, selected: alignTextModel.TextAlign) => {
-    setValue(selected);
+  const selectedAlignOption: alignTextModel.TextAlign = selectedShape?.props.align || 'left';
+
+  const handleChange = (e: MouseEvent<HTMLElement>, align: alignTextModel.TextAlign) => {
+    dispatch(whiteboardModel.modifyShape({ ...selectedShape!, props: { ...selectedShape?.props, align } }));
   };
 
-  console.log({ isText });
-
   return isText ? (
-    <ToggleButtonGroup exclusive value={value} onChange={handleChange}>
+    <ToggleButtonGroup exclusive value={selectedAlignOption} onChange={handleChange}>
       <ToggleButton value="left">
         <AlignLeftIcon />
       </ToggleButton>
