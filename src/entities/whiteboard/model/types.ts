@@ -19,11 +19,13 @@ export type WhiteboardShapeProps = TextConfig | ImageConfig;
 export type WhiteboardShape = {
   id: string;
   type: WhiteboardShapeType;
+  draft: boolean;
   props: WhiteboardShapeProps;
 };
 
 export type WhiteboardState = {
   mode: WhiteboardMode;
   selectedShapeId?: string;
+  selectedShapeType?: WhiteboardShapeType;
   shapes: WhiteboardShape[];
 };

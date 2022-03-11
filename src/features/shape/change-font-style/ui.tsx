@@ -9,8 +9,8 @@ export const TextStyleSelector = () => {
   const dispatch = useDispatch();
   const isText = selectedShape?.type === whiteboardModel.WhiteboardShapeType.Notes;
 
-  const selectedFontStyleOptions: string[] = (selectedShape?.props.fontStyle || 'normal regular').split(' ');
-  const selectedStyleOptions: string[] = [...selectedFontStyleOptions, selectedShape?.props.textDecoration];
+  // const selectedFontStyleOptions: string[] = (selectedShape?.props.fontStyle || 'normal regular').split(' ');
+  const selectedStyleOptions: string[] = [selectedShape?.props.fontStyle, selectedShape?.props.textDecoration];
 
   const handleChange = (e: MouseEvent<HTMLElement>, styles: string[]) => {
     const fontWeight = styles.find((style) => style === 'bold') || 'light';
@@ -21,7 +21,7 @@ export const TextStyleSelector = () => {
       whiteboardModel.modifyShape({
         ...selectedShape!,
         // FIXME: fix font-style
-        props: { ...selectedShape?.props, fontStyle: `${fontStyle} ${fontWeight}`, textDecoration },
+        props: { ...selectedShape?.props, fontStyle, textDecoration },
       }),
     );
   };

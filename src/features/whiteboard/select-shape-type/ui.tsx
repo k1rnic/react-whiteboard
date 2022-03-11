@@ -1,6 +1,7 @@
 import { whiteboardModel } from 'entities/whiteboard';
-import { MouseEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { selectedShapeTypeSelector } from 'entities/whiteboard/model';
+import { MouseEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FileIcon from 'shared/assets/icons/File.svg';
 import ImageIcon from 'shared/assets/icons/Image.svg';
 import VideoIcon from 'shared/assets/icons/Video.svg';
@@ -8,26 +9,37 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const ShapeTypeSelector = () => {
-  const [value, setValue] = useState<whiteboardModel.WhiteboardShapeType>();
+  const selectedShapeType = useSelector(selectedShapeTypeSelector);
   const dispatch = useDispatch();
 
   const handleChange = (e: MouseEvent<HTMLElement>, selected?: whiteboardModel.WhiteboardShapeType) => {
-    setValue(selected);
-    dispatch(whiteboardModel.selectShapeType(selected));
+    switch (selected) {
+      case whiteboardModel.WhiteboardShapeType.Notes:
+        dispatch(
+          whiteboardModel.createShapeDraft({
+            type: whiteboardModel.WhiteboardShapeType.Notes,
+            props: {
+              text: 'Enter text',
+              fontFamily: 'Montserrat',
+              fontSize: 14,
+            },
+          }),
+        );
+    }
   };
 
   return (
-    <ToggleButtonGroup exclusive value={value} onChange={handleChange}>
-      <ToggleButton variant="text" value="notes">
+    <ToggleButtonGroup exclusive value={selectedShapeType} onChange={handleChange}>
+      <ToggleButton variant="text" value={whiteboardModel.WhiteboardShapeType.Notes}>
         T
       </ToggleButton>
-      <ToggleButton value="image">
+      <ToggleButton value={whiteboardModel.WhiteboardShapeType.Image}>
         <ImageIcon />
       </ToggleButton>
-      <ToggleButton value="video">
+      <ToggleButton value={whiteboardModel.WhiteboardShapeType.Video}>
         <VideoIcon />
       </ToggleButton>
-      <ToggleButton value="file">
+      <ToggleButton value={whiteboardModel.WhiteboardShapeType.File}>
         <FileIcon />
       </ToggleButton>
     </ToggleButtonGroup>
