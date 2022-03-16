@@ -10,7 +10,7 @@ export default makeSx({
     width: '100%',
     backgroundColor: palette.grey[2],
   }),
-  item: {
+  items: {
     display: 'flex',
     alignItems: 'center',
   },
