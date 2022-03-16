@@ -8,4 +8,4 @@ export default {
   args: {},
 } as ComponentMeta<typeof WhiteboardWithToolbox>;
 
-export const Overview: ComponentStory<typeof WhiteboardWithToolbox> = (args) => <WhiteboardWithToolbox />;
+export const Overview: ComponentStory<typeof WhiteboardWithToolbox> = () => <WhiteboardWithToolbox />;

@@ -8,8 +8,6 @@ export const useAnchors = (shapeType?: whiteboardModel.WhiteboardShapeType): Anc
     switch (shapeType) {
       case whiteboardModel.WhiteboardShapeType.Notes:
         return [Anchor.MiddleLeft, Anchor.MiddleRight];
-      case undefined:
-        return [];
       default:
         return [
           Anchor.TopLeft,

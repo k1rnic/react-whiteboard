@@ -16,7 +16,7 @@ export const TextAlignSelector = () => {
   const selectedAlignOption: alignTextModel.TextAlign = selectedShape?.props.align || 'left';
 
   const handleChange = (e: MouseEvent<HTMLElement>, align: alignTextModel.TextAlign) => {
-    dispatch(whiteboardModel.modifyShape({ ...selectedShape!, props: { ...selectedShape?.props, align } }));
+    dispatch(whiteboardModel.modifyShape({ align }));
   };
 
   return (

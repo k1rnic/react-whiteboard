@@ -1,1 +1,1 @@
-export * from './types';
+export type TextAlign = 'left' | 'right' | 'center' | 'justify';

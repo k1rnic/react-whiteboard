@@ -1,8 +1,14 @@
-import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import TestImgSrc from 'shared/assets/img/img.jpg';
 import { uuid } from 'shared/lib/uuid';
 
-import { WhiteboardMode, WhiteboardShape, WhiteboardShapeType, WhiteboardState } from './types';
+import {
+  DraftWhiteboardShape,
+  WhiteboardMode,
+  WhiteboardShapeProps,
+  WhiteboardShapeType,
+  WhiteboardState,
+} from './types';
 
 const initialState: WhiteboardState = {
   mode: WhiteboardMode.View,
@@ -10,11 +16,11 @@ const initialState: WhiteboardState = {
     {
       id: 'notes1',
       type: WhiteboardShapeType.Notes,
-      draft: false,
       props: {
         text: 'Sample text 1',
         fontFamily: 'Montserrat',
         fontSize: 14,
+        fontWeight: 'bold',
         x: 0,
         y: 0,
       },
@@ -22,7 +28,6 @@ const initialState: WhiteboardState = {
     {
       id: 'notes2',
       type: WhiteboardShapeType.Notes,
-      draft: false,
       props: {
         text: 'Sample text 2',
         fontFamily: 'Montserrat',
@@ -34,12 +39,12 @@ const initialState: WhiteboardState = {
     {
       id: 'notes3',
       type: WhiteboardShapeType.Notes,
-      draft: false,
       props: {
         text: 'Sample text 3',
         fontFamily: 'Montserrat',
         fontSize: 18,
         fontStyle: 'italic',
+        fontWeight: 'bold',
         x: 200,
         y: 200,
       },
@@ -47,7 +52,6 @@ const initialState: WhiteboardState = {
     {
       id: 'notes4',
       type: WhiteboardShapeType.Image,
-      draft: false,
       props: {
         src: TestImgSrc,
         x: 350,
@@ -67,45 +71,38 @@ const slice = createSlice({
   reducers: {
     selectShape: (state, { payload }: PayloadAction<string | undefined>) => {
       state.selectedShapeId = payload;
-      if (!payload) {
-        state.shapes = state.shapes.filter(({ draft }) => !draft);
-        state.selectedShapeType = undefined;
-      }
     },
-    modifyShape: (state, { payload }: PayloadAction<Omit<WhiteboardShape, 'draft'>>) => {
-      state.shapes = state.shapes.map<any>(({ id, ...props }) =>
-        id === payload.id ? { ...payload, props: payload.props } : { id, ...props },
-      );
+    modifyShape: (state, { payload }: PayloadAction<WhiteboardShapeProps>) => {
+      state.shapes.forEach((shape) => {
+        if (shape.id === state.selectedShapeId) {
+          shape.props = { ...shape.props, ...payload };
+        }
+      });
     },
     removeShape: (state, { payload }: PayloadAction<string>) => {
       state.shapes = state.shapes.filter(({ id }) => id !== payload);
-      state.selectedShapeType = undefined;
     },
-    createShape: (state, { payload }: PayloadAction<Draft<Omit<WhiteboardShape, 'id' | 'draft'>>>) => {
-      const shapeId = uuid();
-
-      state.selectedShapeId = shapeId;
-      state.shapes.push({ ...payload, id: shapeId, draft: false });
-      state.selectedShapeType = payload.type;
+    createShape: (state, { payload }: PayloadAction<DraftWhiteboardShape>) => {
+      // const shapeId = uuid();
+      // state.selectedShapeId = shapeId;
+      // state.shapes.push({ ...payload, id: shapeId, draft: false });
     },
-    createShapeDraft: (state, { payload }: PayloadAction<Draft<Omit<WhiteboardShape, 'id' | 'draft'>>>) => {
-      const shapeId = uuid();
-
-      state.selectedShapeId = shapeId;
-      state.shapes.push({ ...payload, id: shapeId, draft: true });
-      state.selectedShapeType = payload.type;
+    createShapeDraft: (state, { payload }: PayloadAction<DraftWhiteboardShape>) => {
+      const id = uuid();
+      state.shapes.push({ ...payload, id, draft: true });
+      state.selectedShapeId = id;
     },
     commitDrafts: (state) => {
       state.shapes.forEach((shape) => {
         shape.draft = false;
       });
     },
-    resetDrafts: (state) => {
+    clearDrafts: (state) => {
       state.shapes = state.shapes.filter(({ draft }) => !draft);
     },
   },
 });
 
-export const { selectShape, modifyShape, createShape, createShapeDraft, commitDrafts, resetDrafts, removeShape } =
+export const { selectShape, modifyShape, createShape, createShapeDraft, commitDrafts, clearDrafts, removeShape } =
   slice.actions;
 export const reducer = slice.reducer;

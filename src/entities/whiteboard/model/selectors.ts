@@ -7,12 +7,12 @@ const stateSelector = (state: Record<typeof reducerName, WhiteboardState>) => st
 
 export const modeSelector = createSelector(stateSelector, ({ mode }) => mode);
 export const shapeListSelector = createSelector(stateSelector, ({ shapes }) => shapes);
-export const visibleShapeListSelector = createSelector(stateSelector, ({ shapes }) =>
+export const visibleShapeListSelector = createSelector(shapeListSelector, (shapes) =>
   shapes.filter(({ draft }) => !draft),
 );
-export const hasDraftShapeSelector = createSelector(stateSelector, ({ shapes }) => !!shapes.find(({ draft }) => draft));
+export const hasDraftShapeSelector = createSelector(shapeListSelector, (shapes) => !!shapes.find(({ draft }) => draft));
 export const selectedShapeIdSelector = createSelector(stateSelector, ({ selectedShapeId }) => selectedShapeId);
 export const selectedShapeSelector = createSelector(shapeListSelector, selectedShapeIdSelector, (shapes, selectedId) =>
   shapes.find(({ id }) => id === selectedId),
 );
-export const selectedShapeTypeSelector = createSelector(stateSelector, ({ selectedShapeType }) => selectedShapeType);
+export const selectedShapeTypeSelector = createSelector(selectedShapeSelector, (shape) => shape?.type);

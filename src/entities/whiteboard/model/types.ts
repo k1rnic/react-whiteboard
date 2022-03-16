@@ -1,5 +1,5 @@
-import { ImageConfig } from 'konva/lib/shapes/Image';
-import { TextConfig } from 'konva/lib/shapes/Text';
+import { imageShapeModel } from 'shared/ui/image';
+import { notesShapeModel } from 'shared/ui/notes';
 
 export enum WhiteboardMode {
   View,
@@ -13,19 +13,35 @@ export enum WhiteboardShapeType {
   Video,
   File,
 }
+// FIXME: fix types bro
+export type WhiteboardShapeProps = any;
+// export type WhiteboardShapeProps = notesShapeModel.NotesConfig | imageShapeModel.ImageConfig;
 
-export type WhiteboardShapeProps = TextConfig | (ImageConfig & { src: string });
-
-export type WhiteboardShape = {
+export type WhiteboardBaseShape = {
   id: string;
-  type: WhiteboardShapeType;
-  draft: boolean;
-  props: WhiteboardShapeProps;
+  draft?: boolean;
 };
+
+export type WhiteboardNotesShape = {
+  type: WhiteboardShapeType.Notes;
+  props: notesShapeModel.NotesConfig;
+} & WhiteboardBaseShape;
+
+export type WhiteboardImageShape = {
+  type: WhiteboardShapeType.Image;
+  props: imageShapeModel.ImageConfig;
+} & WhiteboardBaseShape;
+
+// FIXME: fix types bro
+export type WhiteboardShape = any;
+// export type WhiteboardShape = WhiteboardNotesShape | WhiteboardImageShape;
+
+// FIXME: fix types bro
+export type DraftWhiteboardShape = any;
+// export type DraftWhiteboardShape = Omit<WhiteboardShape, 'id' | 'draft'>;
 
 export type WhiteboardState = {
   mode: WhiteboardMode;
   selectedShapeId?: string;
-  selectedShapeType?: WhiteboardShapeType;
-  shapes: WhiteboardShape[];
+  shapes: Array<WhiteboardShape>;
 };

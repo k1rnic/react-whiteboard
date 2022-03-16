@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { TextConfig } from 'konva/lib/shapes/Text';
 import { useState } from 'react';
+import { Canvas } from 'shared/ui/canvas';
 
-import { Canvas } from '../canvas';
+import { NotesConfig } from '../model';
 import { Notes } from '.';
 
 export default {
@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof Notes>;
 
 export const Overview: ComponentStory<typeof Notes> = (args) => {
-  const [notesProps] = useState<TextConfig>({
+  const [notesProps] = useState<NotesConfig>({
     id: 'notes',
     text: 'Sample text',
     fontFamily: 'Montserrat',

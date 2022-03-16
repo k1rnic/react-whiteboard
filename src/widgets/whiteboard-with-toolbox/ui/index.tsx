@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { Whiteboard } from 'entities/whiteboard';
 import { ShapeTransformer } from 'features/shape/transform';
-import { Toolbox } from 'widgets/toolbox';
+import { Toolbox } from 'widgets/toolbox/ui';
 
 import useStyles from './styles';
 

@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 import TestImgSrc from 'shared/assets/img/img.jpg';
+import { Canvas } from 'shared/ui/canvas';
 
-import { Canvas } from '../canvas';
-import { Image, ImageProps } from '.';
+import { Image, ImageProps } from '..';
 
 export default {
   title: 'shared/image',

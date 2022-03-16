@@ -2,9 +2,9 @@ import { whiteboardModel } from 'entities/whiteboard';
 import { ChangeEventHandler, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ImageIcon from 'shared/assets/icons/Image.svg';
-import { ToggleButton } from 'shared/ui/toggle-button';
+import { ToggleButton, ToggleButtonProps } from 'shared/ui/toggle-button';
 
-export const ImageShapeUploader = () => {
+export const AddImage = (props: ToggleButtonProps) => {
   const [file, setFile] = useState<File | null>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const ImageShapeUploader = () => {
   };
 
   return (
-    <ToggleButton value={whiteboardModel.WhiteboardShapeType.Image} onClick={handleUploadClick}>
+    <ToggleButton {...props} onClick={handleUploadClick}>
       <ImageIcon />
       <input
         multiple={false}
