@@ -13,9 +13,8 @@ export enum WhiteboardShapeType {
   Video,
   File,
 }
-// FIXME: fix types bro
-export type WhiteboardShapeProps = any;
-// export type WhiteboardShapeProps = notesShapeModel.NotesConfig | imageShapeModel.ImageConfig;
+
+export type WhiteboardShapeProps = notesShapeModel.NotesConfig | imageShapeModel.ImageConfig;
 
 export type WhiteboardBaseShape = {
   id: string;
@@ -32,13 +31,9 @@ export type WhiteboardImageShape = {
   props: imageShapeModel.ImageConfig;
 } & WhiteboardBaseShape;
 
-// FIXME: fix types bro
-export type WhiteboardShape = any;
-// export type WhiteboardShape = WhiteboardNotesShape | WhiteboardImageShape;
+export type WhiteboardShape = WhiteboardNotesShape | WhiteboardImageShape;
 
-// FIXME: fix types bro
-export type DraftWhiteboardShape = any;
-// export type DraftWhiteboardShape = Omit<WhiteboardShape, 'id' | 'draft'>;
+export type DraftWhiteboardShape = Omit<WhiteboardShape, 'id' | 'draft'>;
 
 export type WhiteboardState = {
   mode: WhiteboardMode;

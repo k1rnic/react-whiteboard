@@ -75,7 +75,7 @@ const slice = createSlice({
     modifyShape: (state, { payload }: PayloadAction<WhiteboardShapeProps>) => {
       state.shapes.forEach((shape) => {
         if (shape.id === state.selectedShapeId) {
-          shape.props = { ...shape.props, ...payload };
+          shape.props = { ...shape.props, ...payload } as any;
         }
       });
     },
@@ -89,7 +89,7 @@ const slice = createSlice({
     },
     createShapeDraft: (state, { payload }: PayloadAction<DraftWhiteboardShape>) => {
       const id = uuid();
-      state.shapes.push({ ...payload, id, draft: true });
+      state.shapes.push({ ...payload, id, draft: true } as any);
       state.selectedShapeId = id;
     },
     commitDrafts: (state) => {
