@@ -5,10 +5,10 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const DecorateText = () => {
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
   const dispatch = useDispatch();
 
-  const selectedTextDecoration = selectedShape?.props.textDecoration;
+  const selectedTextDecoration = selectedShape?.textDecoration;
 
   const handleChange = (e: MouseEvent<HTMLElement>, textDecoration: string) => {
     dispatch(whiteboardModel.modifyShape({ textDecoration }));

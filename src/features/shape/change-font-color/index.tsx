@@ -10,10 +10,10 @@ import useStyles from './styles';
 
 export const ChangeFontColor = () => {
   const dispatch = useDispatch();
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
-  const selectedColor = selectedShape?.props.fill;
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
+  const selectedColor = selectedShape?.fill;
 
-  const styles = useStyles({ color: selectedColor });
+  const styles = useStyles({ color: selectedColor! });
 
   const [colorPickerOpened, toggleColorPicker] = useToggle(false);
 

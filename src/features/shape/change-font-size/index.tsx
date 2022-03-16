@@ -11,8 +11,8 @@ import useStyles from './styles';
 export const ChangeFontSize = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
-  const selectedFontSize = selectedShape?.props.fontSize;
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
+  const selectedFontSize = selectedShape?.fontSize;
 
   const increment = () => {
     dispatch(whiteboardModel.modifyShape({ fontSize: selectedFontSize + 1 }));

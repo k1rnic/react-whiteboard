@@ -16,3 +16,4 @@ export const selectedShapeSelector = createSelector(shapeListSelector, selectedS
   shapes.find(({ id }) => id === selectedId),
 );
 export const selectedShapeTypeSelector = createSelector(selectedShapeSelector, (shape) => shape?.type);
+export const selectedShapePropsSelector = createSelector(selectedShapeSelector, (shape) => shape?.props);

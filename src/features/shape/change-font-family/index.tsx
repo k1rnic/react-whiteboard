@@ -3,13 +3,10 @@ import { whiteboardModel } from 'entities/whiteboard';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToolboxSelect, ToolboxSelectItem } from 'shared/ui/toolbox-select';
 
-import useStyles from './styles';
-
 export const ChangeFontFamily = () => {
-  const styles = useStyles();
   const dispatch = useDispatch();
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
-  const selectedFontFamily = selectedShape?.props.fontFamily;
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
+  const selectedFontFamily = selectedShape?.fontFamily;
 
   const handleChange = ({ target: { value: fontFamily } }: SelectChangeEvent<any>) => {
     dispatch(whiteboardModel.modifyShape({ fontFamily }));

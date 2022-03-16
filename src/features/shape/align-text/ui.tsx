@@ -10,10 +10,10 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const AlignText = () => {
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
   const dispatch = useDispatch();
 
-  const selectedAlignOption: alignTextModel.TextAlign = selectedShape?.props.align || 'left';
+  const selectedAlignOption: alignTextModel.TextAlign = selectedShape?.align || 'left';
 
   const handleChange = (e: MouseEvent<HTMLElement>, align: alignTextModel.TextAlign) => {
     dispatch(whiteboardModel.modifyShape({ align }));

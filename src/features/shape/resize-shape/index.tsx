@@ -10,9 +10,9 @@ import useStyles from './styles';
 export const ResizeShape = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
-  const selectedWidth = selectedShape?.props.width;
-  const selectedHeight = selectedShape?.props.height;
+  const selectedShape = useSelector(whiteboardModel.selectedShapePropsSelector);
+  const selectedWidth = selectedShape?.width;
+  const selectedHeight = selectedShape?.height;
 
   const handleWidthChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     dispatch(whiteboardModel.modifyShape({ width: +value }));
