@@ -7,6 +7,7 @@ export default makeSx({
     position: 'absolute',
     boxShadow: '6px 20px 36px rgba(6, 18, 55, 0.04)',
     '& .chrome-picker': {
+      fontFamily: 'Montserrat, Arial !important',
       boxShadow: 'none !important',
     },
   },

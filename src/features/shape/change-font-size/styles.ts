@@ -4,7 +4,7 @@ export default makeSx({
   root: {
     display: 'inline-flex',
     alignItems: 'center',
-    padding: ({ spacing }) => spacing(0, 0.5),
+    padding: ({ spacing }) => spacing(0, 1),
   },
   control: ({ palette }) => ({
     height: 24,

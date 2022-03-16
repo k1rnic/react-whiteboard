@@ -35,8 +35,8 @@ export const Image = ({ onChange, onSelect, ...props }: ImageProps) => {
       ...props,
       x: node.x(),
       y: node.y(),
-      width: Math.max(node.width() * scaleX, 50),
-      height: Math.max(node.height() * scaleY, 50),
+      width: Math.max(Math.round(node.width() * scaleX), 50),
+      height: Math.max(Math.round(node.height() * scaleY), 50),
     });
   };
 
