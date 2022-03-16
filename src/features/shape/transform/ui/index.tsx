@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const MIN_BOX_WIDTH = 50;
 const MIN_BOX_HEIGHT = 20;
 
-export const ShapeTransformer = () => {
+export const TransformShape = () => {
   const { palette } = useTheme();
   const transformerRef = useRef<TransformerRef>(null!);
 

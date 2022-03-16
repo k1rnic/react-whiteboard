@@ -1,18 +1,18 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Whiteboard } from 'entities/whiteboard';
 
-import { ShapeTransformer } from '.';
+import { TransformShape } from '.';
 
 export default {
   title: 'features/shape/transform',
-  component: ShapeTransformer,
+  component: TransformShape,
   args: {},
-} as ComponentMeta<typeof ShapeTransformer>;
+} as ComponentMeta<typeof TransformShape>;
 
-export const Overview: ComponentStory<typeof ShapeTransformer> = () => {
+export const Overview: ComponentStory<typeof TransformShape> = () => {
   return (
     <Whiteboard>
-      <ShapeTransformer />
+      <TransformShape />
     </Whiteboard>
   );
 };

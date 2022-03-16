@@ -5,7 +5,7 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 
 import useStyles from './styles';
 
-export const RemoveShapeButton = () => {
+export const RemoveShape = () => {
   const styles = useStyles();
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();

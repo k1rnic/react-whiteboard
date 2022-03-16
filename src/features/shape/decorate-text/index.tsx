@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
-export const DecorateTextSelector = () => {
+export const DecorateText = () => {
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
 

@@ -1,11 +1,11 @@
 import { Box, Toolbar as MuiToolbar } from '@mui/material';
 import { whiteboardModel } from 'entities/whiteboard';
-import { TextAlignSelector } from 'features/shape/align-text';
-import { RemoveShapeButton } from 'features/whiteboard/remove-shape/ui';
+import { AlignText } from 'features/shape/align-text';
+import { RemoveShape } from 'features/whiteboard/remove-shape/ui';
 import { useSelector } from 'react-redux';
 import { Divider } from 'shared/ui/divider';
 import { ToolboxAddShapeGroup } from 'widgets/toolbox-add-shape-group';
-import { ToolboxFontStyleGroup } from 'widgets/toolbox-font-style-group';
+import { ToolboxChangeFontStyleGroup } from 'widgets/toolbox-change-font-style-group';
 
 import useStyles from './styles';
 
@@ -22,19 +22,19 @@ export const Toolbox = () => {
         {isText && (
           <>
             <Divider />
-            <ToolboxFontStyleGroup />
+            <ToolboxChangeFontStyleGroup />
           </>
         )}
         {isText && (
           <>
             <Divider />
-            <TextAlignSelector />
+            <AlignText />
           </>
         )}
         {canRemove && (
           <>
             <Divider />
-            <RemoveShapeButton />
+            <RemoveShape />
           </>
         )}
       </Box>

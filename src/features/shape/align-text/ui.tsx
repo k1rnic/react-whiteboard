@@ -9,7 +9,7 @@ import AlignJustifyIcon from 'shared/assets/icons/Justify.svg';
 import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
-export const TextAlignSelector = () => {
+export const AlignText = () => {
   const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
 
