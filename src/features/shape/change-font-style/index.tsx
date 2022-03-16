@@ -5,9 +5,8 @@ import { ToggleButton } from 'shared/ui/toggle-button';
 import { ToggleButtonGroup } from 'shared/ui/toggle-button-group';
 
 export const ChangeFontStyle = () => {
-  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const dispatch = useDispatch();
-
+  const selectedShape = useSelector(whiteboardModel.selectedShapeSelector);
   const selectedFontStyle = selectedShape?.props.fontStyle;
 
   const handleChange = (e: MouseEvent<HTMLElement>, fontStyle: string) => {
