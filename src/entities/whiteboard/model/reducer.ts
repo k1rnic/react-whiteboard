@@ -12,6 +12,7 @@ import {
 
 const initialState: WhiteboardState = {
   mode: WhiteboardMode.View,
+  selectedShapeId: 'notes1',
   shapes: [
     {
       id: 'notes1',
@@ -82,11 +83,6 @@ const slice = createSlice({
     removeShape: (state, { payload }: PayloadAction<string>) => {
       state.shapes = state.shapes.filter(({ id }) => id !== payload);
     },
-    createShape: (state, { payload }: PayloadAction<DraftWhiteboardShape>) => {
-      // const shapeId = uuid();
-      // state.selectedShapeId = shapeId;
-      // state.shapes.push({ ...payload, id: shapeId, draft: false });
-    },
     createShapeDraft: (state, { payload }: PayloadAction<DraftWhiteboardShape>) => {
       const id = uuid();
       state.shapes.push({ ...payload, id, draft: true } as any);
@@ -103,6 +99,5 @@ const slice = createSlice({
   },
 });
 
-export const { selectShape, modifyShape, createShape, createShapeDraft, commitDrafts, clearDrafts, removeShape } =
-  slice.actions;
+export const { selectShape, modifyShape, createShapeDraft, commitDrafts, clearDrafts, removeShape } = slice.actions;
 export const reducer = slice.reducer;

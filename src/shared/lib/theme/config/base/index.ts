@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { shadowOptions } from 'shared/lib/theme/config/base/shadows';
 
 import { breakpointOptions } from './breakpoints';
 import { componentsConfig } from './components';
@@ -10,4 +11,5 @@ export default createTheme({
   typography: typographyConfig,
   palette: paletteConfig,
   breakpoints: breakpointOptions,
+  shadows: shadowOptions,
 });

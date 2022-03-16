@@ -1,5 +1,6 @@
 import { whiteboardModel } from 'entities/whiteboard';
 import { AlignText } from 'features/shape/align-text';
+import { ChangeFontColor } from 'features/shape/change-font-color';
 import { ChangeFontSize } from 'features/shape/change-font-size';
 import { Fragment, memo } from 'react';
 import { useSelector } from 'react-redux';
@@ -20,6 +21,10 @@ export const ITEMS: ToolboxItem[] = [
   {
     shapes: [whiteboardModel.WhiteboardShapeType.Notes],
     component: <AlignText />,
+  },
+  {
+    shapes: [whiteboardModel.WhiteboardShapeType.Notes],
+    component: <ChangeFontColor />,
   },
 ];
 

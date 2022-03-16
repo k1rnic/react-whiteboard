@@ -1,7 +1,7 @@
 import { Input, styled } from '@mui/material';
 
-export const ToolboxInput = styled(Input)({
-  width: 30,
+export const ToolboxInput = styled(Input)<{ width?: number }>(({ width = 30 }) => ({
+  width,
   height: 24,
   input: {
     padding: 0,
@@ -15,7 +15,7 @@ export const ToolboxInput = styled(Input)({
       margin: 0,
     },
   },
-});
+}));
 
 ToolboxInput.defaultProps = {
   disableUnderline: true,
