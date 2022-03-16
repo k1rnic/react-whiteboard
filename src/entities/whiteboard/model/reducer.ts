@@ -12,7 +12,7 @@ import {
 
 const initialState: WhiteboardState = {
   mode: WhiteboardMode.View,
-  selectedShapeId: 'notes4',
+  selectedShapeId: 'notes1',
   shapes: [
     {
       id: 'notes1',
@@ -51,7 +51,7 @@ const initialState: WhiteboardState = {
       },
     },
     {
-      id: 'notes4',
+      id: 'image1',
       type: WhiteboardShapeType.Image,
       props: {
         src: TestImgSrc,

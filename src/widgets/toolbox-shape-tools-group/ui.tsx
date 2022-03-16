@@ -1,6 +1,7 @@
 import { whiteboardModel } from 'entities/whiteboard';
 import { AlignText } from 'features/shape/align-text';
 import { ChangeFontColor } from 'features/shape/change-font-color';
+import { ChangeFontFamily } from 'features/shape/change-font-family';
 import { ChangeFontSize } from 'features/shape/change-font-size';
 import { ResizeShape } from 'features/shape/resize-shape';
 import { Fragment, memo } from 'react';
@@ -11,6 +12,10 @@ import { ToolboxChangeFontStyleGroup } from 'widgets/toolbox-change-font-style-g
 import { ToolboxItem } from './model';
 
 export const ITEMS: ToolboxItem[] = [
+  {
+    shapes: [whiteboardModel.WhiteboardShapeType.Notes],
+    component: <ChangeFontFamily />,
+  },
   {
     shapes: [whiteboardModel.WhiteboardShapeType.Notes],
     component: <ChangeFontSize />,

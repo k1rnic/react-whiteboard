@@ -6,9 +6,12 @@ export default makeSx({
     marginTop: 0.25,
     position: 'absolute',
     boxShadow: '6px 20px 36px rgba(6, 18, 55, 0.04)',
+    borderRadius: 12,
     '& .chrome-picker': {
+      borderRadius: 12,
       fontFamily: 'Montserrat, Arial !important',
       boxShadow: 'none !important',
+      border: ({ palette }) => `1px solid ${palette.grey[2]}`,
     },
   },
   backdrop: {
