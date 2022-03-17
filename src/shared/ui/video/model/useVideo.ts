@@ -6,9 +6,9 @@ import { VideoConfig } from './types';
 
 export type UseVideoProps = {
   videoRef: MutableRefObject<ImageRef>;
-} & Pick<VideoConfig, 'src' | 'play'>;
+} & Pick<VideoConfig, 'src' | 'play' | 'muted'>;
 
-export const useVideo = ({ videoRef, play, src }: UseVideoProps) => {
+export const useVideo = ({ videoRef, play, src, muted }: UseVideoProps) => {
   const video = useMemo(() => {
     const element = document.createElement('video');
     element.src = src;
@@ -18,6 +18,7 @@ export const useVideo = ({ videoRef, play, src }: UseVideoProps) => {
 
   useEffect(() => {
     if (play) {
+      video.muted = muted ?? video.muted;
       video.play();
       const anim = new Konva.Animation(() => {}, [videoRef.current?.getLayer()]);
       anim.start();
@@ -25,7 +26,7 @@ export const useVideo = ({ videoRef, play, src }: UseVideoProps) => {
         anim.stop();
       };
     }
-  }, [play]);
+  }, [play, muted]);
 
   return video;
 };

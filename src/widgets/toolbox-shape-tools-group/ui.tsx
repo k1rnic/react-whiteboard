@@ -8,6 +8,7 @@ import { Fragment, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Divider } from 'shared/ui/divider';
 import { ToolboxChangeFontStyleGroup } from 'widgets/toolbox-change-font-style-group';
+import { ToolboxVideoControlGroup } from 'widgets/toolbox-video-control-group';
 
 import { ToolboxItem } from './model';
 
@@ -31,6 +32,10 @@ export const ITEMS: ToolboxItem[] = [
   {
     shapes: [whiteboardModel.WhiteboardShapeType.Notes],
     component: <ChangeFontColor />,
+  },
+  {
+    shapes: [whiteboardModel.WhiteboardShapeType.Video],
+    component: <ToolboxVideoControlGroup />,
   },
   {
     shapes: [

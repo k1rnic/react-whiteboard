@@ -12,7 +12,7 @@ export type VideoProps = {
 
 export const Video = ({ onChange, onSelect, ...props }: VideoProps) => {
   const shapeRef = useRef<ImageRef>(null!);
-  const video = useVideo({ src: props.src, play: props.play, videoRef: shapeRef });
+  const video = useVideo({ src: props.src, play: props.play, muted: props.muted, videoRef: shapeRef });
 
   const handleSelect = ({ target: { attrs } }: KonvaEventObject<MouseEvent | DragEvent>) => {
     onSelect(attrs.id);
