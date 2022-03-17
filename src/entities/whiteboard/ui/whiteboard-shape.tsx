@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Image, ImageProps } from 'shared/ui/image';
 import { Notes, NotesProps } from 'shared/ui/notes';
+import { Video, VideoProps } from 'shared/ui/video';
 
 import {
   modifyShape,
@@ -25,6 +26,10 @@ export const WhiteboardShape = ({ id, type, props }: WhiteboardShapeModel) => {
     case WhiteboardShapeType.Image:
       return (
         <Image draggable id={id} {...(props as ImageProps)} onChange={handleChange} onSelect={handleSelectionChange} />
+      );
+    case WhiteboardShapeType.Video:
+      return (
+        <Video draggable id={id} {...(props as VideoProps)} onChange={handleChange} onSelect={handleSelectionChange} />
       );
     case WhiteboardShapeType.Notes:
     default:

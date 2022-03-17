@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import TestImgSrc from 'shared/assets/img/img.jpg';
 import { uuid } from 'shared/lib/uuid';
 
 import {
@@ -54,7 +53,7 @@ const initialState: WhiteboardState = {
       id: 'image1',
       type: WhiteboardShapeType.Image,
       props: {
-        src: TestImgSrc,
+        src: 'https://picsum.photos/200',
         image: undefined,
         x: 350,
         y: 350,

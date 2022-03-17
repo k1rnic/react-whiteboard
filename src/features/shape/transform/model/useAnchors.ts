@@ -1,7 +1,7 @@
 import { whiteboardModel } from 'entities/whiteboard';
 import { useMemo } from 'react';
 
-import { Anchor } from '../model';
+import { Anchor } from '.';
 
 export const useAnchors = (shapeType?: whiteboardModel.WhiteboardShapeType): Anchor[] => {
   const anchors = useMemo(() => {

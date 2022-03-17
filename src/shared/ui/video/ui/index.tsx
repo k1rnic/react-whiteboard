@@ -2,18 +2,17 @@ import { KonvaEventObject } from 'konva/lib/Node';
 import { Image as ImageRef } from 'konva/lib/shapes/Image';
 import { useRef } from 'react';
 import { Image as KonvaImage } from 'react-konva';
-import useImage from 'use-image';
 
-import { ImageConfig } from '../model';
+import { useVideo, VideoConfig } from '../model';
 
-export type ImageProps = {
+export type VideoProps = {
   onSelect: (selectedId: string) => void;
-  onChange: (changes: ImageConfig) => void;
-} & ImageConfig;
+  onChange: (changes: VideoConfig) => void;
+} & VideoConfig;
 
-export const Image = ({ onChange, onSelect, ...props }: ImageProps) => {
+export const Video = ({ onChange, onSelect, ...props }: VideoProps) => {
   const shapeRef = useRef<ImageRef>(null!);
-  const [image] = useImage(props.src);
+  const video = useVideo({ src: props.src, play: props.play, videoRef: shapeRef });
 
   const handleSelect = ({ target: { attrs } }: KonvaEventObject<MouseEvent | DragEvent>) => {
     onSelect(attrs.id);
@@ -43,7 +42,7 @@ export const Image = ({ onChange, onSelect, ...props }: ImageProps) => {
     <KonvaImage
       {...props}
       ref={shapeRef}
-      image={image}
+      image={video}
       onClick={handleSelect}
       onDragStart={handleSelect}
       onDragEnd={handleDragEnd}

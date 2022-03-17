@@ -1,10 +1,11 @@
 import { useTheme } from '@mui/material';
 import { whiteboardModel } from 'entities/whiteboard';
-import { useAnchors } from 'features/shape/transform/hooks';
 import { Box as KonvaBox, Transformer as TransformerRef } from 'konva/lib/shapes/Transformer';
 import { useEffect, useRef } from 'react';
 import { Transformer } from 'react-konva';
 import { useSelector } from 'react-redux';
+
+import { useAnchors } from '../model';
 
 const MIN_BOX_WIDTH = 50;
 const MIN_BOX_HEIGHT = 20;

@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
-import TestImgSrc from 'shared/assets/img/img.jpg';
 import { Canvas } from 'shared/ui/canvas';
 
 import { Image, ImageProps } from '..';
@@ -14,7 +13,7 @@ export default {
 export const Overview: ComponentStory<typeof Image> = (args) => {
   const [imageProps] = useState<Partial<ImageProps>>({
     id: 'image',
-    src: TestImgSrc,
+    src: 'https://picsum.photos/150',
     height: 150,
     width: 150,
     y: 150,

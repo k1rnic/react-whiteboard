@@ -1,5 +1,6 @@
 import { imageShapeModel } from 'shared/ui/image';
 import { notesShapeModel } from 'shared/ui/notes';
+import { videoShapeModel } from 'shared/ui/video';
 
 export enum WhiteboardMode {
   View,
@@ -14,7 +15,10 @@ export enum WhiteboardShapeType {
   File,
 }
 
-export type WhiteboardShapeProps = notesShapeModel.NotesConfig | imageShapeModel.ImageConfig;
+export type WhiteboardShapeProps =
+  | notesShapeModel.NotesConfig
+  | imageShapeModel.ImageConfig
+  | videoShapeModel.VideoConfig;
 
 export type WhiteboardBaseShape = {
   id: string;
@@ -31,7 +35,12 @@ export type WhiteboardImageShape = {
   props: imageShapeModel.ImageConfig;
 } & WhiteboardBaseShape;
 
-export type WhiteboardShape = WhiteboardNotesShape | WhiteboardImageShape;
+export type WhiteboardVideoShape = {
+  type: WhiteboardShapeType.Video;
+  props: videoShapeModel.VideoConfig;
+} & WhiteboardBaseShape;
+
+export type WhiteboardShape = WhiteboardNotesShape | WhiteboardImageShape | WhiteboardVideoShape;
 
 export type DraftWhiteboardShape = Omit<WhiteboardShape, 'id' | 'draft'>;
 

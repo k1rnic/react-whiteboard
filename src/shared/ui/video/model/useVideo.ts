@@ -1,0 +1,31 @@
+import Konva from 'konva';
+import { Image as ImageRef } from 'konva/lib/shapes/Image';
+import { MutableRefObject, useEffect, useMemo } from 'react';
+
+import { VideoConfig } from './types';
+
+export type UseVideoProps = {
+  videoRef: MutableRefObject<ImageRef>;
+} & Pick<VideoConfig, 'src' | 'play'>;
+
+export const useVideo = ({ videoRef, play, src }: UseVideoProps) => {
+  const video = useMemo(() => {
+    const element = document.createElement('video');
+    element.src = src;
+    element.muted = true;
+    return element;
+  }, [src]);
+
+  useEffect(() => {
+    if (play) {
+      video.play();
+      const anim = new Konva.Animation(() => {}, [videoRef.current?.getLayer()]);
+      anim.start();
+      return () => {
+        anim.stop();
+      };
+    }
+  }, [play]);
+
+  return video;
+};
